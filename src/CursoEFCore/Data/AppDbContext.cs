@@ -24,5 +24,10 @@ namespace CursoEFCore.Data
                      maxRetryDelay: TimeSpan.FromSeconds(15), 
                      errorNumbersToAdd: null).MigrationsHistoryTable("curso_ef_core"));
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        }
     }
 }
